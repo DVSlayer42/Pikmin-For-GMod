@@ -38,14 +38,12 @@ resource.AddFile("materials/VGUI/entities/pikmin.vmt")
 resource.AddFile("materials/weapons/pikmincommand.vtf")
 resource.AddFile("materials/weapons/pikmincommand.vmt")
 
-local function DontToolMe(ply, tr, tool)
-	if tr and IsValid(tr.Entity) and tr.Entity:isPikmin() then
-		if tool == "duplicator" then return false end
-	end
-end
-
---dunno why this is a thing
-hook.Add("CanTool", "DontDupeOnions", DontToolMe)
+--[[
+Originally had a DontToolMe function that disabled the ability
+to use the Tool Gun to spawn certain objects such as ZPMs into
+a ZPM hub in the "Carter Addon Pack (CAP)" addon. Removing the
+"DontToolMe" function allows other mods to funciton 100% properly.
+]]
 
 local function DontPickMeUp(ply, ent)
 	if IsValid(ent) and ent:isPikmin() then return false end

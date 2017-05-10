@@ -42,8 +42,7 @@ local function SpawnPikminMenu(ply, cmd, args)
 		end
 
 		function btn:DoClick()
-			numtospawn = tonumber(numtospawn)
-			if numtospawn and type(numtospawn) == "number" and numtospawn >= 1 then
+			if numtospawn and tonumber(numtospawn) then
 				for r=1,numtospawn,1 do
 					RunConsoleCommand("pikmin_create", piktbl[i])
 				end
@@ -93,13 +92,6 @@ local function SpawnPikminMenu(ply, cmd, args)
 		if pnum:GetText() ~= defaulttext then
 			numtospawn = pnum:GetText()||""
 		end
-	end
-
-	function pnum:Paint()
-		draw.RoundedBox(4, 0, 0, W, H, Color(100, 100, 100, 200))
-		draw.DrawText(pnum:GetText()||"", "DermaDefault", 2, 3, color_white, TEXT_ALIGN_LEFT)
-
-		return true
 	end
 
 	frame:SizeToContents()

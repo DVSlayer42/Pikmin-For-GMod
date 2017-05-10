@@ -15,11 +15,8 @@ function ENT:Initialize()
 	self:StartMotionController()
 	self.DrownSound = CreateSound(self, "pikmin/drowning.wav")
 
-	for k, v in pairs(ents.FindByClass("pikmin")) do
-		if (IsValid(v) and v ~= self) then
-			constraint.NoCollide(self, v, 0, 0)
-		end
-	end
+	--[[Mod originally set the Pikmin to not colide with anything.
+	Enabling collision allows interaction with other addons.]]
 
 	local phys = self:GetPhysicsObject()
 
